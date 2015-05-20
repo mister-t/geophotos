@@ -39,10 +39,10 @@ module.exports = function(grunt) {
     less: {
       dev: {
         options: {
-          paths: ["./static/styles"]
+          paths: ["./public/stylesheets"]
         },
         files: {
-          "./public/css/app.css": "./static/styles/app.less"
+          "./public/stylesheets/app.css": "./public/stylesheets/app.less"
         }
       }
     },
@@ -76,8 +76,11 @@ module.exports = function(grunt) {
         livereload: true
       },
       less: {
-        files: "./static/styles/**/*.less",
+        files: "./public/**/*.less",
         tasks: "less"
+      },
+      jade: {
+          files: ['./views/**/*.jade']
       }
     }
   });
