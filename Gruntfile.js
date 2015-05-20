@@ -75,6 +75,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('test', ['jshint']);
-  grunt.registerTask('build', ['desktopJS', 'desktopCSS']);
+  grunt.registerTask('build', ['requirejs:desktopJS', 'requirejs:desktopCSS']);
   grunt.registerTask('default', ['test', 'build']);
 };
