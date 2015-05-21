@@ -16,23 +16,23 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'], functio
   App.addInitializer(function () {
     // Add class to target a browser, not as standalone app.
     if (window.navigator.standalone !== true) {
-        $('body').addClass('no-standalone');
+      $('body').addClass('no-standalone');
     }
 
     // Prevent internal links from causing a page refresh.
     $(document).on('click', 'a', function(event) {
-        var fragment = Backbone.history.getFragment($(this).attr('href'));
-        var matched = _.any(Backbone.history.handlers, function(handler) {
-            return handler.route.test(fragment);
-        });
-        if (matched) {
-            event.preventDefault();
+      var fragment = Backbone.history.getFragment($(this).attr('href'));
+      var matched = _.any(Backbone.history.handlers, function(handler) {
+        return handler.route.test(fragment);
+      });
+      if (matched) {
+        event.preventDefault();
 
-            //Normailly, 'trigger' would have been set to 'true', but we are
-            //using our own sub routes that don't need to be triggered
-            //Backbone.history.navigate(fragment, { trigger: false });
-            App.navigate(fragment, { trigger: false });
-        }
+        //Normailly, 'trigger' would have been set to 'true', but we are
+        //using our own sub routes that don't need to be triggered
+        //Backbone.history.navigate(fragment, { trigger: false });
+        App.navigate(fragment, { trigger: false });
+      }
     });
   });
 
@@ -53,9 +53,16 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'], functio
 
   App.on('initialize:after', function () {
     if (Backbone.history) {
-      if (!Backbone.history.started) {
-        Backbone.history.start({ pushState: true });
-      }
+      require(['students/StudentsApp'], function () {
+
+        if (!Backbone.history.started) {
+          Backbone.history.start({ pushState: true });
+        }
+
+        if (App.getCurrentRoute() === '' && !App.currentPage) {
+          App.trigger('students:list:profiles');
+        }
+      });
     }
   });
 
