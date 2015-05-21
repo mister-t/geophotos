@@ -3,6 +3,11 @@ require.config({
   paths: {
     desktopInit: "init/DesktopInit",
     jquery: "../libs/jquery",
+    metisMenu: "../libs/plugins/metisMenu/jquery.metisMenu",
+    slimscroll: "../libs/plugins/slimscroll/jquery.slimscroll",
+    inspinia: "../libs/inspinia",
+    pace: "../libs/plugins/pace/pace.min",
+    bootstrap: "../libs/bootstrap.min",
     underscore: "../libs/lodash",
     backbone: "../libs/backbone",
     marionette: "../libs/backbone.marionette",
@@ -26,6 +31,21 @@ require.config({
     ],
     "backbone.localstorage": [
       "backbone"
+    ],
+    bootstrap: [
+      "jquery"
+    ],
+    metisMenu: [
+      "jquery"
+    ],
+    slimscroll: [
+      "jquery"
+    ],
+    inspinia: [
+      "jquery"
+    ],
+    pace: [
+      "jquery"
     ],
     marionette: {
       deps: [
