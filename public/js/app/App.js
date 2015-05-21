@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'], function ($, Backbone, Marionette, _, Handlebars) {
+define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'constants'], function ($, Backbone, Marionette, _, Handlebars, Constants) {
   var App = new Backbone.Marionette.Application();
 
   function isMobile() {
@@ -10,7 +10,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'], functio
   //Regions can contain views, Layouts, or subregions nested as necessary
   App.addRegions({
       headerRegion:"header",
-      mainRegion:"#main"
+      mainRegion:"#main div.row"
   });
 
   App.addInitializer(function () {
@@ -53,14 +53,14 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'], functio
 
   App.on('initialize:after', function () {
     if (Backbone.history) {
-      require(['students/StudentsApp'], function () {
+      require(['home/HomeApp'], function () {
 
         if (!Backbone.history.started) {
           Backbone.history.start({ pushState: true });
         }
 
         if (App.getCurrentRoute() === '' && !App.currentPage) {
-          App.trigger('students:list:profiles');
+          App.trigger(Constants.home.SHOW_HOME);
         }
       });
     }
