@@ -1,6 +1,7 @@
 require.config({
   baseUrl: "/js/app",
   paths: {
+    constants: "config/Constants",
     desktopInit: "init/DesktopInit",
     jquery: "../libs/jquery",
     metisMenu: "../libs/plugins/metisMenu/jquery.metisMenu",
