@@ -3,7 +3,17 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  var params = {
+    title								: 'Student Information System'
+    , isTesting					: process.env.NODE_ENV !== 'production'
+    , isProduction			: process.env.IS_PRODUCTION || false
+    , appDir						: process.env.APP_DIR || '/js/app/config'
+    , cssDir						: process.env.CSS_DIR || '/stylesheets'
+    , requirejsDir			: process.env.REQUIREJS_DIR || '/js/libs'
+
+  };
+
+  res.render('index', params);
 });
 
 module.exports = router;
