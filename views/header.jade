@@ -4,5 +4,55 @@ head
   title #{title}
   include includes/css
 body
-  nav#nav_menu
-  div#main
+  #wrapper
+    nav.navbar-default.navbar-static-side(role='navigation')
+      .sidebar-collapse
+        ul#side-menu.nav
+          li.nav-header
+            .dropdown.profile-element
+              a.dropdown-toggle(data-toggle='dropdown', href='#')
+                span.clear
+                  span.block.m-t-xs
+                    strong.font-bold Jane Doe
+                  span.text-muted.text-xs.block
+                    | Registrar
+                    b.caret
+              ul.dropdown-menu.animated.fadeInRight.m-t-xs
+                li
+                  a(href='#') Logout
+            .logo-element
+              | IN+
+          li.active
+            a(href='index.html')
+              i.fa.fa-th-large
+              span.nav-label View Students
+          li
+            a(href='minor.html')
+              i.fa.fa-th-large
+              span.nav-label view Courses
+    #page-wrapper.gray-bg
+      .row.border-bottom
+        nav.navbar.navbar-static-top.white-bg(role='navigation', style='margin-bottom: 0')
+          .navbar-header
+            a.navbar-minimalize.minimalize-styl-2.btn.btn-primary(href='#')
+              i.fa.fa-bars
+            form.navbar-form-custom(role='search', method='post', action='#')
+              .form-group
+                input#top-search.form-control(type='text', placeholder='Search for students', name='top-search')
+          ul.nav.navbar-top-links.navbar-right
+            li
+              a(href='#')
+                i.fa.fa-sign-out
+                |  Log out
+      #main.wrapper.wrapper-content.animated.fadeInRight
+        .row
+          .col-lg-12
+            .text-center.m-t-lg
+              h1
+                | Welcome to the Student Information System
+              small
+                | You may start by looking for students or courses
+      .footer
+        div
+          strong Copyright
+          |  &copy 2015
