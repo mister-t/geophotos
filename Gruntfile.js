@@ -20,8 +20,8 @@ module.exports = function(grunt) {
       desktopCSS: {
         options: {
           optimizeCss: "standard",
-          cssIn: "./public/css/app.css",
-          out: "./public/css/app.min.css"
+          cssIn: "./public/stylesheets/app.css",
+          out: "./public/stylesheets/app.min.css"
         }
       }
     },
