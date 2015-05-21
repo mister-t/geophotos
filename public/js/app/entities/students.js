@@ -5,21 +5,25 @@ define([ 'App', 'config/storage/localstorage'], function (App) {
       urlRoot: 'students',
 
       defaults: {
-        emailAddr: '',
+        emailaddr: '',
         sex: '',
         primeCurric: '',
         birthDate: '',
-        firstName: '',
-        lastName: ''
+        firstname: '',
+        lastname: ''
       },
 
       validate: function (attrs, options) {
+        /*
+         * Validation is run automatically on 'save';
+         * If errors existed, the save will not propagate to local storage
+         */
         var errors = {};
 
-        if (!attrs.emailAddr) {
-          errors.emailAddr = 'can\'t be blank.';
-        } else if (attrs.email === 'test@ucsf.edu') {
-          errors.emailAddr = 'must be a valid address.';
+        if (!attrs.emailaddr) {
+          errors.emailaddr = 'can\'t be blank.';
+        } else if (attrs.emailaddr === 'test@ucsf.edu') {
+          errors.emailaddr = 'must be a valid address.';
         }
 
         if (!attrs.sex) {
@@ -30,16 +34,16 @@ define([ 'App', 'config/storage/localstorage'], function (App) {
           errors.primeCurric = 'can\'t be blank.';
         }
 
-        if (!attrs.birthDate) {
-          errors.birthDate = 'can\'t be blank.';
+        //if (!attrs.birthDate) {
+          //errors.birthDate = 'can\'t be blank.';
+        //}
+
+        if (!attrs.firstname) {
+          errors.firstname = 'can\'t be blank.';
         }
 
-        if (!attrs.firstName) {
-          errors.firstName = 'can\'t be blank.';
-        }
-
-        if (!attrs.lastName) {
-          errors.lastName = 'can\'t be blank.';
+        if (!attrs.lastname) {
+          errors.lastname = 'can\'t be blank.';
         }
 
         if (!_.isEmpty(errors)) {
@@ -48,12 +52,14 @@ define([ 'App', 'config/storage/localstorage'], function (App) {
       }
     });
 
-    Entities.configureStorage("App.Entities.Student");
+    Entities.configureStorage(Entities.Student);
 
     Entities.StudentCollection = Backbone.Collection.extend({
       url: 'students',
       model: Entities.Student
     });
+
+    Entities.configureStorage(Entities.StudentCollection);
 
     var initializeStudents = function() {
       var students = new Entities.StudentCollection([
@@ -95,27 +101,27 @@ define([ 'App', 'config/storage/localstorage'], function (App) {
         }
       ]);
 
-      students.forEach(function(student) {
-          student.save();
+      students.forEach(function (student) {
+        student.save();
       });
 
       return students.models;
     };
 
     var API = {
-      getStudentEntities: function() {
+      getStudentEntities: function () {
         var students = new Entities.StudentCollection();
         var defer = $.Deferred();
 
         students.fetch({
-          success: function(data) {
+          success: function (data) {
             defer.resolve(data);
           }
         });
 
         var promise = defer.promise();
 
-        $.when(promise).done(function(fetchedStudents) {
+        $.when(promise).done(function (fetchedStudents) {
           if (fetchedStudents.length === 0) {
             var models = initializeStudents();
             students.reset(models);
@@ -124,7 +130,7 @@ define([ 'App', 'config/storage/localstorage'], function (App) {
         return promise;
       },
 
-      getStudentEntity: function(studentId) {
+      getStudentEntity: function (studentId) {
         var student = new Entities.student({
           id: studentId
         });
@@ -144,11 +150,11 @@ define([ 'App', 'config/storage/localstorage'], function (App) {
       }
     };
 
-    App.reqres.setHandler("student:entities", function () {
+    App.reqres.addHandler('student:entities', function () {
       return API.getStudentEntities();
     });
 
-    App.reqres.setHandler("student:entity", function (id) {
+    App.reqres.addHandler('student:entity', function (id) {
       return API.getStudentEntity(id);
     });
   });
