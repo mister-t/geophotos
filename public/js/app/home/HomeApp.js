@@ -9,6 +9,7 @@ define(['App', 'constants', 'home/show/ShowController'], function (App, Constant
     var API = {
       showHome: function () {
         ShowController.showHome();
+        App.trigger(Constants.sidebar.SHOW_SIDEBAR);
         App.navigate('/home');
       }
     };
