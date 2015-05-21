@@ -1,4 +1,4 @@
-define([ 'App', 'config/storage/localstorage'], function (App) {
+define([ 'App', 'entities/data/students', 'config/storage/localstorage'], function (App, StudentsData) {
   App.module('Entities', function (Entities, App, Backbone, Marionette, $, _) {
 
     Entities.Student = Backbone.Model.extend({
@@ -62,44 +62,7 @@ define([ 'App', 'config/storage/localstorage'], function (App) {
     Entities.configureStorage(Entities.StudentCollection);
 
     var initializeStudents = function() {
-      var students = new Entities.StudentCollection([
-        {
-          "id" : 20770,
-          "sex" : "F",
-          "primeCurric" : "5752",
-          "firstname" : "uaYa osainyD",
-          "lastname" : "nUmee",
-          "emailaddr" : "uaYaosainyD.nUmee@test.com",
-          "termEnrollmentsForEnlisted": [{
-            "calres" : "R",
-            "entstat" : "C",
-            "primecurr" : "P",
-            "calendarForAppliesTo" : {
-              "id" : "WI09"
-            },
-            "curriculumForEnrolledIn" : {
-              "id" : "5750",
-              "name" : "Physical Therapy (MS)   "
-            },
-            "studyListsForParentCurric": [{
-              "id" : 1681385,
-              "course" : "122.01",
-              "name" : "Mammalian Physiology II",
-              "ucode" : "PY122.010 "
-            }, {
-              "id" : 1681383,
-              "course" : "110",
-              "name" : "Ortho & Rehab Diag/Treatment",
-              "ucode" : "PT1100    "
-            }, {
-              "id" : 1681384,
-              "course" : "410",
-              "name" : "Clinical Clerkship",
-              "ucode" : "PT4100    "
-            }]
-          }]
-        }
-      ]);
+      var students = new Entities.StudentCollection(StudentsData);
 
       students.forEach(function (student) {
         student.save();
