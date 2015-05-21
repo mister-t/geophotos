@@ -11,7 +11,8 @@ require.config({
     i18nprecompile: "../libs/i18nprecompile",
     json2: "../libs/json2",
     "backbone.syphon": "../libs/backbone.syphon",
-    "localstorage": "../libs/backbone.localstorage",
+    "backbone.localstorage":"../libs/backbone.localstorage",
+    "text":"../libs/text"
   },
   shim: {
     backbone: {
@@ -37,5 +38,13 @@ require.config({
     handlebars: {
       exports: "Handlebars"
     }
+  },
+  // hbs config - must duplicate in Gruntfile.js Require build
+  hbs: {
+    templateExtension: "html",
+    helperDirectory: "templates/helpers/",
+    i18nDirectory: "templates/i18n/",
+
+    compileOptions: {}        // options object which is passed to Handlebars compiler
   }
 });
