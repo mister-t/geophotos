@@ -10,7 +10,6 @@ define(['App', 'jquery', 'hbs!students/list/templates/student', 'hbs!students/li
       },
 
       onRender: function () {
-        console.log(this.model.toJSON());
       }
     });
 
