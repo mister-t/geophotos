@@ -19,7 +19,7 @@ define(['App', 'constants', 'students/edit/EditView'], function (App, Constants,
               });
 
               heading.on(Constants.students.show.PROFILE, function () {
-                App.trigger(Constants.students.show.PROFIL);
+                App.trigger(Constants.students.show.PROFILE);
               });
 
             App.pageHeadingRegion.show(heading);

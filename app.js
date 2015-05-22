@@ -26,6 +26,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/students', routes);
 app.use('/students/:id', routes);
+app.use('/students/:id/edit', routes);
 app.use('/home', routes);
 
 // catch 404 and forward to error handler

@@ -9,7 +9,8 @@ define([
     StudentsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         'students'    : 'showStudents',
-        'students/:id': 'showStudent'
+        'students/:id': 'showStudent',
+        'students/:id/edit': 'editStudent'
       }
     });
 
