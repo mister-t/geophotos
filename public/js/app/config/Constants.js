@@ -26,7 +26,7 @@ define(function(){
     students: {
       show: {
         HOME: 'students:show:home',
-        STUDENT: 'students:show:student'
+        PROFILE: 'students:show:profile'
       },
       list: {
         PROFILES: 'students:list:profiles'

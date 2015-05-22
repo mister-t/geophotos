@@ -94,7 +94,7 @@ define([ 'App', 'entities/data/students', 'config/storage/localstorage'], functi
       },
 
       getStudentEntity: function (studentId) {
-        var student = new Entities.student({
+        var student = new Entities.Student({
           id: studentId
         });
 
