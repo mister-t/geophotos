@@ -29,7 +29,10 @@ define(function(){
         PROFILE: 'students:show:profile'
       },
       edit: {
-        SHOW: 'students:profile:edit'
+        SHOW: 'students:profile:edit',
+        CANCEL: 'students:profile:edit:cancel',
+        SUBMIT: 'students:profile:edit:submit',
+        INVALID: 'form:data:invalid'
       },
       select: {
         ON: 'students:select:on',
