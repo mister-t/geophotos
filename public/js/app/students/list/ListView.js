@@ -27,8 +27,8 @@ define([
       template: studentTpl,
 
       events: {
-        'mouseover': function (evt) { this.mouseoverCard(evt); },
-        'mouseout': function (evt) { this.mouseoutCard(evt); }
+        'mouseover address': function (evt) { this.mouseoverCard(evt); },
+        'mouseout address': function (evt) { this.mouseoutCard(evt); }
       },
 
       mouseoverCard: function (evt) {
