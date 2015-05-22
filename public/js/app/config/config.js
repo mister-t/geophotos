@@ -16,6 +16,7 @@ require.config({
     hbs: "../libs/hbs",
     i18nprecompile: "../libs/i18nprecompile",
     json2: "../libs/json2",
+    toastr: "../libs/plugins/toastr/toastr.min",
     "backbone.syphon": "../libs/backbone.syphon",
     "backbone.localstorage":"../libs/backbone.localstorage",
     "text":"../libs/text"
@@ -46,6 +47,9 @@ require.config({
       "jquery"
     ],
     pace: [
+      "jquery"
+    ],
+    toastr: [
       "jquery"
     ],
     marionette: {

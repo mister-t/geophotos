@@ -2,10 +2,11 @@ define([
   'App',
   'constants',
   'jquery',
+  'toastr',
   'hbs!students/list/templates/heading',
   'hbs!students/list/templates/student',
   'hbs!students/list/templates/students'
-], function(App, Constants, $, headingTpl, studentTpl, studentsTpl) {
+], function(App, Constants, $, toastr, headingTpl, studentTpl, studentsTpl) {
 
   App.module('StudentsApp.List.View', function(View, App, Backbone, Marionette, $, _){
     View.Heading = Backbone.Marionette.ItemView.extend({
@@ -13,7 +14,8 @@ define([
       template: headingTpl,
 
       events: {
-        'click a#select_btn': function (evt) { this.checkOnOff(evt); }
+        'click a#select_btn': function (evt) { this.checkOnOff(evt); },
+        'click a#email_btn': function (evt) { this.sendEmail(evt); }
       },
 
       initialize: function (options) {
@@ -23,6 +25,12 @@ define([
 
       onRender: function () {
         this.turnOnOff();
+      },
+
+      sendEmail: function (evt) {
+        evt.preventDefault();
+        console.log('sending mail');
+        toastr.success('Only selected recipients will get the email', 'Email Sent!');
       },
 
       checkOnOff: function (evt) {
