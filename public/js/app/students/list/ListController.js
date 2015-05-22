@@ -32,6 +32,14 @@ define(['App', 'constants', 'students/list/ListView'], function (App, Constants,
             $('#app-page-heading').show();
           });
         });
+      },
+
+      selectStudents: function () {
+        $('#app-main input[type=checkbox]').prop('checked', true);
+      },
+
+      unselectStudents: function () {
+        $('#app-main input[type=checkbox]').prop('checked', false);
       }
     };
   });

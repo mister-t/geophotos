@@ -19,11 +19,23 @@ define(['App', 'constants', 'students/list/ListController', 'students/show/ShowC
           App.navigate('/students/' + studentId);
           App.trigger(Constants.sidebar.SHOW_SIDEBAR);
           ShowController.showStudent(studentId);
+        },
+
+        selectStudents: function () {
+          ListController.selectStudents();
+        },
+
+        unselectStudents: function () {
+          ListController.unselectStudents();
         }
       };
 
-    App.on(Constants.students.list.PROFILES, function () {
-      API.showStudents();
+    App.on(Constants.students.select.ON, function () {
+      API.selectStudents();
+    });
+
+    App.on(Constants.students.select.OFF, function () {
+      API.unselectStudents();
     });
 
     App.on(Constants.students.show.PROFILE, function (studentId) {
