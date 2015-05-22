@@ -1,4 +1,10 @@
-define(['App', 'constants', 'students/list/ListController', 'students/show/ShowController'], function (App, Constants, ListController, ShowController) {
+define([
+  'App',
+  'constants',
+  'students/list/ListController',
+  'students/show/ShowController',
+  'students/edit/EditController'
+], function (App, Constants, ListController, ShowController, EditController) {
   App.module('StudentsApp', function (StudentsApp, App, Backbone, Marionette, $, _) {
     StudentsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
@@ -21,6 +27,12 @@ define(['App', 'constants', 'students/list/ListController', 'students/show/ShowC
           ShowController.showStudent(studentId);
         },
 
+        editStudent: function (studentId) {
+          App.navigate('/students/' + studentId + '/edit');
+          App.trigger(Constants.sidebar.SHOW_SIDEBAR);
+          EditController.editStudent(studentId);
+        },
+
         selectStudents: function () {
           ListController.selectStudents();
         },
@@ -40,6 +52,10 @@ define(['App', 'constants', 'students/list/ListController', 'students/show/ShowC
 
     App.on(Constants.students.show.PROFILE, function (studentId) {
       API.showStudent(studentId);
+    });
+
+    App.on(Constants.students.edit.SHOW, function (studentId) {
+      API.editStudent(studentId);
     });
 
     App.on(Constants.students.list.PROFILES, function (studentId) {

@@ -30,7 +30,16 @@ define(['App', 'constants', 'hbs!students/show/templates/heading', 'hbs!students
     View.Profile = Marionette.ItemView.extend({
       className: 'row animated fadeInRight',
 
-      template: profileTpl
+      template: profileTpl,
+
+      events: {
+        'click a#edit_link': function (evt) { this.editProfile(evt); }
+      },
+
+      editProfile: function (evt) {
+        evt.preventDefault();
+        this.trigger(Constants.students.edit.SHOW, this.model.get('id'));
+      }
     });
   });
 

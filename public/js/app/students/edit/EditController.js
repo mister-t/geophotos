@@ -1,14 +1,14 @@
-define(['App', 'constants', 'students/show/ShowView'], function (App, Constants, View) {
-  App.module('StudentsApp.Show', function (Show, App, Backbone, Marionette, $, _) {
-    Show.Controller = {
-      showStudent: function (studentId) {
+define(['App', 'constants', 'students/edit/EditView'], function (App, Constants, View) {
+  App.module('StudentsApp.Edit', function (Edit, App, Backbone, Marionette, $, _) {
+    Edit.Controller = {
+      editStudent: function (studentId) {
         require(['entities/students'], function (studentsEntities) {
           var fetchingStudent = App.request('student:entity', studentId);
 
           $.when(fetchingStudent).done(function (student) {
             var
-              heading = new View.ProfileHeading(),
-              profile = new View.Profile({model: student});
+              heading = new View.EditProfileHeading(),
+              profile = new View.EditProfile({model: student});
 
               heading.on(Constants.home.SHOW_HOME, function () {
                 App.trigger(Constants.home.SHOW_HOME);
@@ -18,9 +18,8 @@ define(['App', 'constants', 'students/show/ShowView'], function (App, Constants,
                 App.trigger(Constants.students.list.PROFILES);
               });
 
-              profile.on(Constants.students.edit.SHOW, function (studentId) {
-                console.log('caught edit profile: ', studentId);
-                App.trigger(Constants.students.edit.SHOW, studentId);
+              heading.on(Constants.students.show.PROFILE, function () {
+                App.trigger(Constants.students.show.PROFIL);
               });
 
             App.pageHeadingRegion.show(heading);
@@ -32,5 +31,5 @@ define(['App', 'constants', 'students/show/ShowView'], function (App, Constants,
     };
   });
 
-  return App.StudentsApp.Show.Controller;
+  return App.StudentsApp.Edit.Controller;
 });
