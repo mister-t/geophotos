@@ -13,6 +13,10 @@ define(['App', 'constants', 'students/list/ListView'], function (App, Constants,
               studentList = new ListView.StudentList({collection: students}),
               pageHeading = new ListView.Heading();
 
+              pageHeading.on(Constants.home.SHOW_HOME, function () {
+                App.trigger(Constants.home.SHOW_HOME);
+              });
+
               pageHeading.on(Constants.students.select.ON, function () {
                 App.trigger(Constants.students.select.ON);
               });

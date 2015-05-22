@@ -14,6 +14,7 @@ define([
       template: headingTpl,
 
       events: {
+        'click a#home_link': function (evt) { this.goHome(evt); },
         'click a#select_btn': function (evt) { this.checkOnOff(evt); },
         'click a#email_btn': function (evt) { this.sendEmail(evt); }
       },
@@ -31,6 +32,11 @@ define([
         evt.preventDefault();
         console.log('sending mail');
         toastr.success('Only selected recipients will get the email', 'Email Sent!');
+      },
+
+      goHome: function (evt) {
+        evt.preventDefault();
+        this.trigger(Constants.home.SHOW_HOME);
       },
 
       checkOnOff: function (evt) {

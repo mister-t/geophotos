@@ -6,10 +6,24 @@ define(['App', 'constants', 'hbs!students/show/templates/heading', 'hbs!students
 
       template: headingTpl,
 
+      initialize: function (options) {
+        this.evts = {
+          'home_link': Constants.home.SHOW_HOME,
+          'students_link': Constants.students.list.PROFILES
+        };
+      },
+
       events: {
+        'click a#home_link': function (evt) { this.showPage(evt); },
+        'click a#students_link': function (evt) { this.showPage(evt); }
       },
 
       onRender: function () {
+      },
+
+      showPage: function (evt) {
+        evt.preventDefault();
+        this.trigger(this.evts[$(evt.currentTarget).attr('id')]);
       }
     });
 

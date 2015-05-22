@@ -10,6 +10,14 @@ define(['App', 'constants', 'students/show/ShowView'], function (App, Constants,
               heading = new View.ProfileHeading(),
               profile = new View.Profile({model: student});
 
+              heading.on(Constants.home.SHOW_HOME, function () {
+                App.trigger(Constants.home.SHOW_HOME);
+              });
+
+              heading.on(Constants.students.list.PROFILES, function () {
+                App.trigger(Constants.students.list.PROFILES);
+              });
+
             App.pageHeadingRegion.show(heading);
             $('#app-page-heading').show();
             App.mainRegion.show(profile);
