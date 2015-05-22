@@ -5,7 +5,7 @@ require.config({
     desktopInit: "init/DesktopInit",
     jquery: "../libs/jquery",
     metisMenu: "../libs/plugins/metisMenu/jquery.metisMenu",
-    slimscroll: "../libs/plugins/slimscroll/jquery.slimscroll",
+    slimscroll: "../libs/plugins/slimscroll/jquery.slimscroll.min",
     inspinia: "../libs/inspinia",
     pace: "../libs/plugins/pace/pace.min",
     bootstrap: "../libs/bootstrap.min",
@@ -46,6 +46,7 @@ require.config({
     inspinia: [
       "jquery",
       "pace",
+      "slimscroll",
       "metisMenu"
     ],
     pace: [
