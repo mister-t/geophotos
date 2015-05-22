@@ -10,8 +10,6 @@ define([
   App.module('StudentsApp.List.View', function(View, App, Backbone, Marionette, $, _){
     View.Heading = Backbone.Marionette.ItemView.extend({
 
-      className: 'col-lg-9',
-
       template: headingTpl,
 
       events: {
