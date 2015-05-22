@@ -28,6 +28,10 @@ define(function(){
         HOME: 'students:show:home',
         PROFILE: 'students:show:profile'
       },
+      select: {
+        ON: 'students:select:on',
+        OFF: 'students:select:off'
+      },
       list: {
         PROFILES: 'students:list:profiles'
       }

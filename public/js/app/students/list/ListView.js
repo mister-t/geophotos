@@ -13,9 +13,49 @@ define([
       template: headingTpl,
 
       events: {
+        'click a#select_btn': function (evt) { this.checkOnOff(evt); }
+      },
+
+      initialize: function (options) {
+        this.model = new Backbone.Model();
+        this.model.set('isChecked', false);
       },
 
       onRender: function () {
+        this.turnOnOff();
+      },
+
+      checkOnOff: function (evt) {
+        evt.preventDefault();
+        this.reverseOnOff();
+      },
+
+      turnOn: function () {
+        this.$('#select_btn').text('Uncheck All');
+      },
+
+      turnOff: function () {
+        this.$('#select_btn').text('Select All');
+      },
+
+      turnOnOff: function () {
+        if (this.model.get('isChecked')) {
+          this.turnOn();
+        } else {
+          this.turnOff();
+        }
+      },
+
+      reverseOnOff: function () {
+        if (this.model.get('isChecked') === true) {
+          this.turnOff();
+          this.model.set('isChecked', false);
+          this.trigger(Constants.students.select.OFF);
+        } else {
+          this.turnOn();
+          this.model.set('isChecked', true);
+          this.trigger(Constants.students.select.ON);
+        }
       }
     });
 

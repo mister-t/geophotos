@@ -13,6 +13,14 @@ define(['App', 'constants', 'students/list/ListView'], function (App, Constants,
               studentList = new ListView.StudentList({collection: students}),
               pageHeading = new ListView.Heading();
 
+              pageHeading.on(Constants.students.select.ON, function () {
+                App.trigger(Constants.students.select.ON);
+              });
+
+              pageHeading.on(Constants.students.select.OFF, function () {
+                App.trigger(Constants.students.select.OFF);
+              });
+
               studentList.on(Constants.students.show.PROFILE, function (childViewModel) {
                 console.log('student id = ', childViewModel.get('id'));
                 App.trigger(Constants.students.show.PROFILE, childViewModel.get('id'));
