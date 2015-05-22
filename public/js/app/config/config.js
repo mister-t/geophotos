@@ -44,7 +44,9 @@ require.config({
       "jquery"
     ],
     inspinia: [
-      "jquery"
+      "jquery",
+      "pace",
+      "metisMenu"
     ],
     pace: [
       "jquery"
