@@ -1,4 +1,4 @@
-define(['App', 'students/list/ListController'], function (App, ListController) {
+define(['App', 'constants', 'students/list/ListController'], function (App, Constants, ListController) {
   App.module('StudentsApp', function (StudentsApp, App, Backbone, Marionette, $, _) {
     StudentsApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
@@ -10,6 +10,7 @@ define(['App', 'students/list/ListController'], function (App, ListController) {
       API = {
         showStudents: function () {
           App.navigate('/students'); //navigate to students to avoid triggering index twice
+          App.trigger(Constants.sidebar.SHOW_SIDEBAR);
           ListController.showStudents();
         }
       };

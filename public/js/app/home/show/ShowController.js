@@ -4,6 +4,7 @@ define(['App', 'constants', 'home/show/ShowView'], function (App, Constants, Vie
       showHome: function () {
         var home = new View.Home();
         App.mainRegion.show(home);
+        $('#app-page-heading').hide();
       }
     };
   });
