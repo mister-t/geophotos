@@ -9,7 +9,7 @@ define(['App', 'constants', 'hbs!sidebar/show/templates/sidebar'], function (App
 
       initialize: function (options) {
         this.evts = {
-          'view_students': Constants.students.show.HOME,
+          'view_students': Constants.students.list.PROFILES,
           'view_courses': Constants.courses.show.HOME,
           'nav_logout': Constants.auth.LOGOUT
         };
@@ -21,6 +21,8 @@ define(['App', 'constants', 'hbs!sidebar/show/templates/sidebar'], function (App
 
       showPage: function (evt) {
         evt.preventDefault();
+        console.log(this.evts[$(evt.currentTarget).attr('id')]);
+        this.trigger(this.evts[$(evt.currentTarget).attr('id')]);
       }
     });
   });
