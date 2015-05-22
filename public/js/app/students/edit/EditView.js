@@ -25,7 +25,7 @@ define(['App', 'constants', 'hbs!students/edit/templates/heading', 'hbs!students
 
       showPage: function (evt) {
         evt.preventDefault();
-        this.trigger(this.evts[$(evt.currentTarget).attr('id')]);
+        this.trigger(this.evts[$(evt.currentTarget).attr('id')], this.model.get('id'));
       }
     });
 

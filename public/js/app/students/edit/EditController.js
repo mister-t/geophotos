@@ -7,7 +7,7 @@ define(['App', 'constants', 'students/edit/EditView'], function (App, Constants,
 
           $.when(fetchingStudent).done(function (student) {
             var
-              heading = new View.EditProfileHeading(),
+              heading = new View.EditProfileHeading({model: student}),
               profile = new View.EditProfile({model: student});
 
               heading.on(Constants.home.SHOW_HOME, function () {
@@ -18,8 +18,8 @@ define(['App', 'constants', 'students/edit/EditView'], function (App, Constants,
                 App.trigger(Constants.students.list.PROFILES);
               });
 
-              heading.on(Constants.students.show.PROFILE, function () {
-                App.trigger(Constants.students.show.PROFILE);
+              heading.on(Constants.students.show.PROFILE, function (studentId) {
+                App.trigger(Constants.students.show.PROFILE, studentId);
               });
 
             App.pageHeadingRegion.show(heading);
