@@ -27,6 +27,18 @@ define([
       template: studentTpl,
 
       events: {
+        'mouseover': function (evt) { this.mouseoverCard(evt); },
+        'mouseout': function (evt) { this.mouseoutCard(evt); }
+      },
+
+      mouseoverCard: function (evt) {
+        evt.preventDefault();
+        this.$('.contact-box').addClass('animated pulse');
+      },
+
+      mouseoutCard: function (evt) {
+        evt.preventDefault();
+        this.$('.contact-box').removeClass('animated pulse');
       },
 
       onRender: function () {
