@@ -42,6 +42,10 @@ define(['App', 'constants', 'students/list/ListController', 'students/show/ShowC
       API.showStudent(studentId);
     });
 
+    App.on(Constants.students.list.PROFILES, function (studentId) {
+      API.showStudents();
+    });
+
     App.addInitializer(function () {
       new StudentsApp.Router({
         controller: API
