@@ -28,6 +28,9 @@ define(function(){
         HOME: 'students:show:home',
         PROFILE: 'students:show:profile'
       },
+      edit: {
+        SHOW: 'students:profile:edit'
+      },
       select: {
         ON: 'students:select:on',
         OFF: 'students:select:off'
