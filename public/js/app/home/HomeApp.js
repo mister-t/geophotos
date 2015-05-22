@@ -10,6 +10,7 @@ define(['App', 'constants', 'home/show/ShowController'], function (App, Constant
       showHome: function () {
         ShowController.showHome();
         App.trigger(Constants.sidebar.SHOW_SIDEBAR);
+        App.trigger(Constants.searchbar.SHOW_SEARCHBAR);
         App.navigate('/home');
       }
     };

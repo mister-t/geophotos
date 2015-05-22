@@ -16,21 +16,24 @@ define([
 
     var
       API = {
-        showStudents: function () {
+        showStudents: function (query) {
           App.navigate('/students'); //navigate to students to avoid triggering index twice
           App.trigger(Constants.sidebar.SHOW_SIDEBAR);
-          ListController.showStudents();
+          App.trigger(Constants.searchbar.SHOW_SEARCHBAR);
+          ListController.showStudents(query);
         },
 
         showStudent: function (studentId) {
           App.navigate('/students/' + studentId);
           App.trigger(Constants.sidebar.SHOW_SIDEBAR);
+          App.trigger(Constants.searchbar.SHOW_SEARCHBAR);
           ShowController.showStudent(studentId);
         },
 
         editStudent: function (studentId) {
           App.navigate('/students/' + studentId + '/edit');
           App.trigger(Constants.sidebar.SHOW_SIDEBAR);
+          App.trigger(Constants.searchbar.SHOW_SEARCHBAR);
           EditController.editStudent(studentId);
         },
 
@@ -59,8 +62,8 @@ define([
       API.editStudent(studentId);
     });
 
-    App.on(Constants.students.list.PROFILES, function (studentId) {
-      API.showStudents();
+    App.on(Constants.students.list.PROFILES, function (query) {
+      API.showStudents(query);
     });
 
     App.addInitializer(function () {

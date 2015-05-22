@@ -9,6 +9,11 @@ define(function(){
       SHOW_SIDEBAR: 'sidebar:show'
     },
 
+    searchbar: {
+      SHOW_SEARCHBAR: 'searchbar:show',
+      SUBMIT: 'searchbar:submit'
+    },
+
     auth: {
       LOGOUT: 'auth:logout'
     },

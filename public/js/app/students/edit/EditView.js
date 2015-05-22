@@ -69,14 +69,14 @@ define([
           $form.find('.control-group.error').each(function (){
             $(this).removeClass('has-error');
           });
-        }
+        };
 
         var markErrors = function (value, key) {
           var $controlGroup = $view.find('#profile-' + key).parent();
 
           var $errorEl = $('<span>', { class: 'help-inline error', text: value });
           $controlGroup.append($errorEl).addClass('has-error');
-        }
+        };
 
         clearFormErrors();
         _.each(errors, markErrors);

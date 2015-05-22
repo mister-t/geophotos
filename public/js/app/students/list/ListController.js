@@ -2,15 +2,25 @@ define(['App', 'constants', 'students/list/ListView'], function (App, Constants,
   App.module('StudentsApp.List', function (List, App, Backbone, Marionette, $, _) {
 
     List.Controller = {
-      showStudents: function () {
+      showStudents: function (query) {
         require(['entities/students'], function (studentsEntities) {
           var
             fetchingStudents = App.request('student:entities');
 
           $.when(fetchingStudents).done(function (students) {
             console.log('controller students: ', students.length);
+
+            var results = students;
+            if (query) {
+              query = query.trim().toLowerCase();
+              results = new App.Entities.StudentCollection(students.filter(function (student) {
+                return (student.get('firstname').toLowerCase().indexOf(query) > -1 ||
+                    student.get('lastname').toLowerCase().indexOf(query) > -1);
+              }));
+            };
+
             var
-              studentList = new ListView.StudentList({collection: students}),
+              studentList = new ListView.StudentList({collection: results}),
               pageHeading = new ListView.Heading();
 
               pageHeading.on(Constants.home.SHOW_HOME, function () {
