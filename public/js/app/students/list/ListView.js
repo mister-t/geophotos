@@ -1,10 +1,11 @@
 define([
   'App',
+  'constants',
   'jquery',
   'hbs!students/list/templates/heading',
   'hbs!students/list/templates/student',
   'hbs!students/list/templates/students'
-], function(App, $, headingTpl, studentTpl, studentsTpl) {
+], function(App, Constants, $, headingTpl, studentTpl, studentsTpl) {
 
   App.module('StudentsApp.List.View', function(View, App, Backbone, Marionette, $, _){
     View.Heading = Backbone.Marionette.ItemView.extend({
@@ -28,7 +29,8 @@ define([
 
       events: {
         'mouseover address': function (evt) { this.mouseoverCard(evt); },
-        'mouseout address': function (evt) { this.mouseoutCard(evt); }
+        'mouseout address': function (evt) { this.mouseoutCard(evt); },
+        'click a': function (evt) { this.showProfile(evt); }
       },
 
       mouseoverCard: function (evt) {
@@ -39,6 +41,11 @@ define([
       mouseoutCard: function (evt) {
         evt.preventDefault();
         this.$('.contact-box').removeClass('animated pulse');
+      },
+
+      showProfile: function (evt) {
+        evt.preventDefault();
+        this.trigger(Constants.students.show.PROFILE);
       },
 
       onRender: function () {
@@ -58,6 +65,9 @@ define([
       },
 
       initialize: function (options) {
+        this.on('itemview:' + Constants.students.show.PROFILE, function (childView) {
+          this.trigger(Constants.students.show.PROFILE, childView.model);
+        }, this);
       },
 
       onRender: function () {

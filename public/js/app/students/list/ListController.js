@@ -1,4 +1,4 @@
-define(['App', 'students/list/ListView'], function (App, ListView) {
+define(['App', 'constants', 'students/list/ListView'], function (App, Constants, ListView) {
   App.module('StudentsApp.List', function (List, App, Backbone, Marionette, $, _) {
 
     List.Controller = {
@@ -12,6 +12,12 @@ define(['App', 'students/list/ListView'], function (App, ListView) {
             var
               studentList = new ListView.StudentList({collection: students}),
               pageHeading = new ListView.Heading();
+
+              studentList.on(Constants.students.show.PROFILE, function (childViewModel) {
+                console.log('student id = ', childViewModel.get('id'));
+                App.trigger(Constants.students.show.PROFILE, childViewModel.get('id'));
+              });
+
 
             App.mainRegion.show(studentList);
             App.pageHeadingRegion.show(pageHeading);

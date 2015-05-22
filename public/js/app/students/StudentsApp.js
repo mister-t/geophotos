@@ -27,7 +27,7 @@ define(['App', 'constants', 'students/list/ListController', 'students/show/ShowC
     });
 
     App.on(Constants.students.show.PROFILE, function (studentId) {
-      API.showStudents(studentId);
+      API.showStudent(studentId);
     });
 
     App.addInitializer(function () {
