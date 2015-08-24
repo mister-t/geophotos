@@ -28,6 +28,11 @@ app.use('/students', routes);
 app.use('/students/:id', routes);
 app.use('/students/:id/edit', routes);
 app.use('/home', routes);
+app.use('/photos', routes);
+app.use('/photos/sf', routes);
+app.use('/photos/nyc', routes);
+app.use('/photos/la', routes);
+app.use('/photos/lv', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
