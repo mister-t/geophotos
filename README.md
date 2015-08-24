@@ -1,2 +1,2 @@
-# sis
-Student Information System
+# Banjo
+Photo Gallery
