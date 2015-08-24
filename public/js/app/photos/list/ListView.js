@@ -30,6 +30,7 @@ define([
       template: photoTpl,
 
       events: {
+        'click': function (evt) { this.showProfile(evt); }
       },
 
       showProfile: function (evt) {

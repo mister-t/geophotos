@@ -2,7 +2,7 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
   App.module('PhotosApp.List', function (List, App, Backbone, Marionette, $, _) {
 
     List.Controller = {
-      showphotos: function (query) {
+      showPhotos: function (query) {
         require(['entities/photos'], function (photosEntities) {
           var
             fetchingphotos = App.request('photo:entities');
@@ -20,12 +20,9 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
             };
 
             var
-              photoList = new ListView.PhotoList({collection: results}),
-              pageHeading = new ListView.Heading();
+              photoList = new ListView.PhotoList({collection: results});
 
             App.mainRegion.show(photoList);
-            App.pageHeadingRegion.show(pageHeading);
-            $('#app-page-heading').show();
           });
         });
       }
