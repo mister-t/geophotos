@@ -55,14 +55,14 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'constan
 
   App.on('initialize:after', function () {
     if (Backbone.history) {
-      require(['home/HomeApp'], function () {
+      require(['photos/PhotosApp'], function () {
 
         if (!Backbone.history.started) {
           Backbone.history.start({ pushState: true });
         }
 
         if (App.getCurrentRoute() === '' && !App.currentPage) {
-          App.trigger(Constants.home.SHOW_HOME);
+          App.trigger(Constants.photos.SHOW_LIST);
         }
       });
     }

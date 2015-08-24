@@ -1,15 +1,12 @@
 require([
   'App',
-  'home/HomeApp',
-  'sidebar/SidebarApp',
-  'searchbar/SearchbarApp',
-  'students/StudentsApp',
+  'photos/PhotosApp',
   'bootstrap',
   'metisMenu',
   'slimscroll',
   'inspinia',
   'pace',
   'toastr'
-], function (App, HomeApp, SidebarApp, StudentsApp, SearchbarApp) {
+], function (App, PhotosApp) {
   App.start();
 });

@@ -18,7 +18,7 @@ define([
         }
       };
 
-    App.on(Constants.photos.list, function (query) {
+    App.on(Constants.photos.SHOW_LIST, function (query) {
       API.showPhotos(query);
     });
 

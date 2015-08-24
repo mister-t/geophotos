@@ -2,11 +2,10 @@ define([
   'App',
   'constants',
   'jquery',
-  'toastr',
   'hbs!photos/list/templates/heading',
   'hbs!photos/list/templates/photo',
   'hbs!photos/list/templates/photos'
-], function(App, Constants, $, toastr, headingTpl, photoTpl, photosTpl) {
+], function(App, Constants, $, headingTpl, photoTpl, photosTpl) {
 
   App.module('PhotosApp.List.View', function(View, App, Backbone, Marionette, $, _){
     View.Heading = Backbone.Marionette.ItemView.extend({
