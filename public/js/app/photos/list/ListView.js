@@ -25,7 +25,7 @@ define([
 
     View.Photo = Backbone.Marionette.ItemView.extend({
 
-      className: 'col-lg-4',
+      tagName: 'a',
 
       template: photoTpl,
 
