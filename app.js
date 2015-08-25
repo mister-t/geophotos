@@ -52,12 +52,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-exports.getImages = function (options) {
-  /* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
-  ig.media_search(48.4335645654, 2.345645645, function (err, medias, remaining, limit) {
-  });
-};
-
 // This is where you would initially send users to authorize
 app.get('/', exports.authorize_user);
 
@@ -65,8 +59,8 @@ app.get('/', exports.authorize_user);
 app.get(IG_RE_PART_URL, exports.handleAuth); //partial URL is everything without the host name
 
 app.use('/photos', function (req, res) {
-  ig.media_search(48.4335645654, 2.345645645, function (err, medias, remaining, limit) {
-    console.log(medias);
+  //San Francisco is the default city
+  ig.media_search(routeUtil.cities.sf.lat, routeUtil.cities.sf.lng, function (err, medias, remaining, limit) {
     res.render('index', routeUtil.params);
   });
 });
