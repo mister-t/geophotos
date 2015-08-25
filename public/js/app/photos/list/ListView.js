@@ -51,9 +51,21 @@ define([
       itemView: View.Photo,
 
       events: {
+        'click .animation_select': function (evt) { this.handleAnimation(evt); }
       },
 
       initialize: function (options) {
+      },
+
+      handleAnimation: function (evt) {
+        evt.preventDefault();
+        this.animate($(evt.currentTarget).data('animation'));
+      },
+
+      animate: function (val) {
+        $('#photo_list_results').removeClass().addClass(val + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+          $(this).removeClass();
+        });
       },
 
       onRender: function () {
