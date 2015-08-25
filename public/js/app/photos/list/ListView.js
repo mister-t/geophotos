@@ -38,6 +38,12 @@ define([
       },
 
       onRender: function () {
+      },
+
+      animate: function (val) {
+        this.$el.removeClass().addClass(val + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+          $(this).removeClass();
+        });
       }
     });
 
@@ -63,9 +69,7 @@ define([
       },
 
       animate: function (val) {
-        $('#photo_list_results').removeClass().addClass(val + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-          $(this).removeClass();
-        });
+        this.trigger(Constants.photos.list.ANIMATE, val);
       },
 
       onRender: function () {

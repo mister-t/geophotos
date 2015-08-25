@@ -22,6 +22,12 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
             var
               photoList = new ListView.PhotoList({collection: results});
 
+              photoList.on(Constants.photos.list.ANIMATE, function (val) {
+                photoList.children.each(function (view) {
+                  view.animate(val);
+                });
+              });
+
             App.mainRegion.show(photoList);
           });
         });
