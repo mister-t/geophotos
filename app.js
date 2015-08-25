@@ -5,6 +5,7 @@ var
 , logger        = require('morgan')
 , cookieParser  = require('cookie-parser')
 , bodyParser    = require('body-parser')
+, routeUtil     = require('./routes/util')
 , ig            = require('instagram-node').instagram()
 , IG_CLIENT_ID  = process.env.IG_CLIENT_ID
 , IG_SECRET     = process.env.IG_SECRET
@@ -22,6 +23,23 @@ ig.use({
   client_secret: IG_SECRET
 });
 
+exports.authorize_user = function(req, res) {
+  res.redirect(ig.get_authorization_url(IG_RE_FULL_URL, {}));
+};
+
+exports.handleAuth = function(req, res) {
+  ig.authorize_user(req.query.code, IG_RE_FULL_URL, function(err, result) {
+    if (err) {
+      console.log(err.body);
+      res.send("Instagram authentication failed: " + err.body);
+    } else {
+      //console.log('Yay! Access token is ' + result.access_token);
+      //res.send('You made it!!');
+      res.redirect('/photos');
+    }
+  });
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -34,30 +52,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-exports.authorize_user = function(req, res) {
-  res.redirect(ig.get_authorization_url(IG_RE_FULL_URL, {}));
-};
-
-exports.handleauth = function(req, res) {
-  ig.authorize_user(req.query.code, IG_RE_FULL_URL, function(err, result) {
-    res.redirect('/photos');
-    //if (err) {
-      //console.log(err.body);
-      ////res.send("Didn't work");
-    //} else {
-      //console.log('Yay! Access token is ' + result.access_token);
-      ////res.send('You made it!!');
-    //}
+exports.getImages = function (options) {
+  /* OPTIONS: { [min_timestamp], [max_timestamp], [distance] }; */
+  ig.media_search(48.4335645654, 2.345645645, function (err, medias, remaining, limit) {
   });
 };
 
 // This is where you would initially send users to authorize
 app.get('/', exports.authorize_user);
-// This is your redirect URI
-app.get(IG_RE_PART_URL, exports.handleauth); //partial URL is everything without the host name
 
-//app.use('/', routes);
-app.use('/photos', routes);
+// This is your redirect URI
+app.get(IG_RE_PART_URL, exports.handleAuth); //partial URL is everything without the host name
+
+app.use('/photos', function (req, res) {
+  ig.media_search(48.4335645654, 2.345645645, function (err, medias, remaining, limit) {
+    console.log(medias);
+    res.render('index', routeUtil.params);
+  });
+});
 
 app.use('/photos/sf', routes);
 app.use('/photos/nyc', routes);

@@ -1,19 +1,11 @@
-var express = require('express');
-var router = express.Router();
+var
+    express = require('express')
+  , util   = require('util')
+  , router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  var params = {
-    title								: 'Instagram Photo Gallery'
-    , isTesting					: process.env.NODE_ENV !== 'production'
-    , isProduction			: process.env.IS_PRODUCTION || false
-    , appDir						: process.env.APP_DIR || '/js/app/config'
-    , cssDir						: process.env.CSS_DIR || '/css'
-    , requirejsDir			: process.env.REQUIREJS_DIR || '/js/libs'
-
-  };
-
-  res.render('index', params);
+  res.render('index', util.params);
 });
 
 module.exports = router;
