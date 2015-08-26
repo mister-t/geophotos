@@ -8,7 +8,9 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
 
           $.when(fetchingphotos).done(function (photos) {
             console.log('controller photos: ', photos);
-            var photoList = new ListView.PhotoList({collection: photos});
+            var
+              heading = new ListView.Heading();
+              photoList = new ListView.PhotoList({collection: photos});
 
             photoList.on(Constants.photos.list.ANIMATE, function (val) {
               photoList.children.each(function (view) {
@@ -16,6 +18,7 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
               });
             });
 
+            App.pageHeadingRegion.show(heading);
             App.mainRegion.show(photoList);
           });
         });

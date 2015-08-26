@@ -10,13 +10,14 @@ define([
   App.module('PhotosApp.List.View', function(View, App, Backbone, Marionette, $, _){
     View.Heading = Backbone.Marionette.ItemView.extend({
 
+      id: 'menu_options',
+
       template: headingTpl,
 
       events: {
       },
 
       initialize: function (options) {
-        this.model = new Backbone.Model();
       },
 
       onRender: function () {

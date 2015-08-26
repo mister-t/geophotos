@@ -9,9 +9,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'constan
   //Organize Application into regions corresponding to DOM elements
   //Regions can contain views, Layouts, or subregions nested as necessary
   App.addRegions({
-      //sidebarRegion:"#wrapper div.sidebar-collapse",
-      //searchbarRegion:"#app-search",
-      //pageHeadingRegion:"#app-page-heading",
+      pageHeadingRegion:"#app-page-heading",
       mainRegion:"#app-main"
   });
 
