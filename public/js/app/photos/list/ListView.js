@@ -20,7 +20,10 @@ define([
       },
 
       initialize: function (options) {
-        options ? options : (options = {});
+        if (!options) {
+          options = {};
+        }
+
         this.city = options.city;
       },
 

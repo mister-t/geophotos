@@ -8,7 +8,7 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
           var fetchingphotos = city ? App.request('photo:entities', {city: city}) : App.request('photo:entities');
 
           $.when(fetchingphotos).done(function (photos) {
-            console.log('controller photos: ', photos);
+            //console.log('controller photos: ', photos);
             var
               heading = new ListView.Heading({city: city});
               photoList = new ListView.PhotoList({collection: photos});
