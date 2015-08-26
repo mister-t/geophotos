@@ -1,2 +1,1 @@
-# Banjo
-Photo Gallery
+# Geophotos: Instagrams of different cities!
