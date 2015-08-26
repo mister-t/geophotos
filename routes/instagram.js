@@ -31,12 +31,25 @@ var getCityGrams = function (req, res) {
 var getGrams = function (medias) {
   //console.log(medias);
   var
-    results = [];
+    results = [],
+    positions = {},
+    randomPosition = 0,
+    length = medias.length;
+
   for (var i = 0; i < config.instagram_media_limit; i++) {
+    //Try to avoid repeated photos
+    do {
+      randomPosition = Math.floor(Math.random() * length - 1) + 1;
+      if (!positions[randomPosition]) {
+        positions[randomPosition] = true;
+        break;
+      }
+    } while (true);
+
     results.push({
-      photoId: medias[i].id,
-      imgSrc: medias[i].images.low_resolution.url,
-      caption: medias[i].caption && medias[i].caption.text ? medias[i].caption.text : ''
+      photoId: medias[randomPosition].id,
+      imgSrc: medias[randomPosition].images.low_resolution.url,
+      caption: medias[randomPosition].caption && medias[randomPosition].caption.text ? medias[randomPosition].caption.text : 'hello'
     });
 
     if (i < 0) { break; }

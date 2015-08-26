@@ -132,7 +132,47 @@ h1 {
     -moz-transform:rotate(10deg) scale(0.7,0.7);
     transform:rotate(10deg) scale(0.7,0.7);
     top:0%;
-    left:25%;
+    left:35%;
+}
+
+.pics li:nth-child(8n) figure {
+    -webkit-transform:rotate(28deg) scale(0.7,0.7);
+    -moz-transform:rotate(28deg) scale(0.7,0.7);
+    transform:rotate(28deg) scale(0.7,0.7);
+    top:0%;
+    left:35%;
+}
+
+.pics li:nth-child(9n) figure {
+    -webkit-transform:rotate(48deg) scale(0.7,0.7);
+    -moz-transform:rotate(48deg) scale(0.7,0.7);
+    transform:rotate(48deg) scale(0.7,0.7);
+    top:50%;
+    left:-20%;
+}
+
+.pics li:nth-child(10n) figure {
+    -webkit-transform:rotate(-38deg) scale(0.7,0.7);
+    -moz-transform:rotate(-38deg) scale(0.7,0.7);
+    transform:rotate(-38deg) scale(0.7,0.7);
+    top:0%;
+    left:-90%;
+}
+
+.pics li:nth-child(11n) figure {
+    -webkit-transform:rotate(18deg) scale(0.7,0.7);
+    -moz-transform:rotate(18deg) scale(0.7,0.7);
+    transform:rotate(18deg) scale(0.7,0.7);
+    top:0%;
+    left:65%;
+}
+
+.pics li:nth-child(12n) figure {
+    -webkit-transform:rotate(-38deg) scale(0.7,0.7);
+    -moz-transform:rotate(-38deg) scale(0.7,0.7);
+    transform:rotate(-38deg) scale(0.7,0.7);
+    top:0%;
+    left:-32%;
 }
 
 /* Pictures rotation and scaling on hover */
