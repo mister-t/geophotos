@@ -62,7 +62,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars', 'constan
         }
 
         if (App.getCurrentRoute() === '' && !App.currentPage) {
-          App.trigger(Constants.photos.SHOW_LIST);
+          App.trigger(Constants.photos.SHOW_LIST, 'sf'); //San Francisco is the default city
         }
       });
     }

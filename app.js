@@ -13,7 +13,7 @@ var
 , IG_RE_PART_URL= process.env.IG_REDIRECT_PARTIAL_URL
 ;
 
-var routes = require('./routes/index');
+//var routes = require('./routes/index');
 
 var app = express();
 
@@ -40,6 +40,28 @@ exports.handleAuth = function(req, res) {
   });
 };
 
+exports.searchMedia = function (req, res, city) {
+  ig.media_search(routeUtil.cities[city].lat, routeUtil.cities[city].lng, function (err, medias, remaining, limit) {
+    if (err) {
+      console.log('error trying to retrieve instagrams data: ' + err);
+      return res.send('Error retrieving Instagram medias');
+    }
+
+    //console.log('medias = ' + medias);
+    var results = [];
+    medias.forEach(function (media) {
+      results.push({
+        imgSrc: media.images.thumbnail.url,
+        caption: media.caption && media.caption.text ? media.caption.text : '',
+        city: city
+      });
+    });
+    console.log(results);
+    //res.json(JSON.stringify(results));
+    res.render('index', routeUtil.params);
+  });
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -59,16 +81,22 @@ app.get('/', exports.authorize_user);
 app.get(IG_RE_PART_URL, exports.handleAuth); //partial URL is everything without the host name
 
 app.use('/photos', function (req, res) {
-  //San Francisco is the default city
-  ig.media_search(routeUtil.cities.sf.lat, routeUtil.cities.sf.lng, function (err, medias, remaining, limit) {
-    res.render('index', routeUtil.params);
-  });
+  exports.searchMedia(req, res, 'sf');
+  //res.render('index', routeUtil.params);
 });
 
-app.use('/photos/sf', routes);
-app.use('/photos/nyc', routes);
-app.use('/photos/la', routes);
-app.use('/photos/lv', routes);
+app.get('/photos/:city', function (req, res) {
+  //San Francisco is the default city
+  var city = req.params.city ? req.params.city : 'sf';
+
+  console.log('route /photos; city = ' + city);
+  exports.searchMedia(req, res, city);
+});
+
+//app.use('/photos/sf', routes);
+//app.use('/photos/nyc', routes);
+//app.use('/photos/la', routes);
+//app.use('/photos/lv', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

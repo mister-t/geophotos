@@ -6,19 +6,23 @@ define([
   App.module('PhotosApp', function (PhotosApp, App, Backbone, Marionette, $, _) {
     PhotosApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
-        'photos'    : 'showPhotos'
+        'photos'      : 'showPhotos',
+        'photos/:city': 'showPhotos'
       }
     });
 
     var
       API = {
-        showPhotos: function (query) {
-          App.navigate('/photos');
-          ListController.showPhotos(query);
+        showPhotos: function (city) {
+          console.log('showPhotos called; city = ' + city);
+          city || (city = 'sf');
+          App.navigate('/photos/' + city);
+          ListController.showPhotos(city);
         }
       };
 
     App.on(Constants.photos.SHOW_LIST, function (query) {
+      console.log('photo sub app: city = ' + query);
       API.showPhotos(query);
     });
 
