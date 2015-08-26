@@ -8,9 +8,10 @@ var
 Bluebird.promisifyAll(instaApi);
 var getCityGrams = function (req, res) {
   if (req.cookies.instaToken) {
+    var city = req.params.city;
     console.log('instagram token cookie deteced');
     instaApi.use({ access_token: req.cookies.instaToken });
-    return instaApi.media_searchAsync(config.cities.sf.lat, config.cities.sf.lng)
+    return instaApi.media_searchAsync(config.cities[city].lat, config.cities[city].lng)
     .spread(function (medias, pagination, remaining, limit) {
       return medias;
     })
@@ -49,7 +50,7 @@ var getGrams = function (medias) {
     results.push({
       photoId: medias[randomPosition].id,
       imgSrc: medias[randomPosition].images.low_resolution.url,
-      caption: medias[randomPosition].caption && medias[randomPosition].caption.text ? medias[randomPosition].caption.text : 'hello'
+      caption: medias[randomPosition].caption && medias[randomPosition].caption.text ? medias[randomPosition].caption.text : '.....'
     });
 
     if (i < 0) { break; }
