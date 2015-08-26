@@ -4,11 +4,6 @@ require.config({
     constants: "config/Constants",
     desktopInit: "init/DesktopInit",
     jquery: "../libs/jquery",
-    metisMenu: "../libs/plugins/metisMenu/jquery.metisMenu",
-    slimscroll: "../libs/plugins/slimscroll/jquery.slimscroll.min",
-    inspinia: "../libs/inspinia",
-    pace: "../libs/plugins/pace/pace.min",
-    bootstrap: "../libs/bootstrap.min",
     underscore: "../libs/lodash",
     backbone: "../libs/backbone",
     marionette: "../libs/backbone.marionette",
@@ -16,9 +11,6 @@ require.config({
     hbs: "../libs/hbs",
     i18nprecompile: "../libs/i18nprecompile",
     json2: "../libs/json2",
-    toastr: "../libs/plugins/toastr/toastr.min",
-    "backbone.syphon": "../libs/backbone.syphon",
-    "backbone.localstorage":"../libs/backbone.localstorage",
     "text":"../libs/text"
   },
   shim: {
@@ -28,33 +20,6 @@ require.config({
       ],
       "exports": "Backbone"
     },
-    "backbone.syphon": [
-      "backbone"
-    ],
-    "backbone.localstorage": [
-      "backbone"
-    ],
-    bootstrap: [
-      "jquery"
-    ],
-    metisMenu: [
-      "jquery"
-    ],
-    slimscroll: [
-      "jquery"
-    ],
-    inspinia: [
-      "jquery",
-      "pace",
-      "slimscroll",
-      "metisMenu"
-    ],
-    pace: [
-      "jquery"
-    ],
-    toastr: [
-      "jquery"
-    ],
     marionette: {
       deps: [
         "underscore",

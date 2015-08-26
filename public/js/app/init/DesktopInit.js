@@ -1,12 +1,6 @@
 require([
   'App',
-  'photos/PhotosApp',
-  'bootstrap',
-  'metisMenu',
-  'slimscroll',
-  'inspinia',
-  'pace',
-  'toastr'
+  'photos/PhotosApp'
 ], function (App, PhotosApp) {
   App.start();
 });
