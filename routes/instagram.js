@@ -16,7 +16,7 @@ var getCityGrams = function (req, res) {
     })
     .then(function (medias) {
       var grams = getGrams(medias);
-      console.log(grams);
+      //console.log(grams);
       res.json(grams);
     })
     .catch(function (errors) {
@@ -29,12 +29,13 @@ var getCityGrams = function (req, res) {
 };
 
 var getGrams = function (medias) {
+  console.log(medias);
   var
     results = [];
   for (var i = 0; i < config.instagram_media_limit; i++) {
     results.push({
       photoId: medias[i].id,
-      imgSrc: medias[i].images.thumbnail.url,
+      imgSrc: medias[i].images.low_resolution.url,
       caption: medias[i].caption && medias[i].caption.text ? medias[i].caption.text : ''
     });
 
