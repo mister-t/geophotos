@@ -132,7 +132,7 @@ h1, label {
     -moz-transform:rotate(10deg) scale(0.7,0.7);
     transform:rotate(10deg) scale(0.7,0.7);
     top:0%;
-    left:35%;
+    left:21%;
 }
 
 .pics li:nth-child(8n) figure {
@@ -148,7 +148,7 @@ h1, label {
     -moz-transform:rotate(48deg) scale(0.7,0.7);
     transform:rotate(48deg) scale(0.7,0.7);
     top:50%;
-    left:-20%;
+    left:-30%;
 }
 
 .pics li:nth-child(10n) figure {
@@ -164,7 +164,7 @@ h1, label {
     -moz-transform:rotate(18deg) scale(0.7,0.7);
     transform:rotate(18deg) scale(0.7,0.7);
     top:0%;
-    left:65%;
+    left:80%;
 }
 
 .pics li:nth-child(12n) figure {
