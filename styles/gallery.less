@@ -1,0 +1,216 @@
+@color0: #333333;
+@color1: #ffffff;
+@color2: #000000;
+
+
+
+* {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+body {
+	background-color: black;
+}
+h1 {
+	background-color:@color2;
+	color:@color1;
+	font-family:'Nothing You Could Do', cursive;
+	padding:10px;
+	text-align:center;
+	text-shadow:1px 1px @color0;
+}
+label {
+	background-color:@color2;
+	color:@color1;
+	font-family:'Nothing You Could Do', cursive;
+	padding:10px;
+	text-align:center;
+	text-shadow:1px 1px @color0;
+}
+.pics {
+	height:500px;
+	margin:0px auto;
+	margin:auto;
+	position:relative;
+	width:800px;
+	figure {
+		-moz-box-shadow:0px 0px 10px rgba(0,0,0,1);
+		-moz-transition:all .30s;
+		-o-transition:all .30s;
+		-webkit-box-shadow:0px 0px 10px rgba(0,0,0,1);
+		-webkit-transition:all .30s;
+		background:@color1;
+		box-shadow:0px 0px 10px rgba(0,0,0,1);
+		color:@color0;
+		display:inline;
+		float:left;
+		font-family:'Nothing You Could Do', cursive;
+		font-size:28px;
+		font-weight:bold;
+		overflow:hidden;
+		padding:10px 10px 30px 10px;
+		position:absolute;
+		text-align:center;
+		text-decoration:none;
+		transition:all .30s;
+		width:auto;
+		&:hover {
+			z-index:100;
+			figcaption {
+				left: 0;
+				opacity: 1;
+			}
+		}
+		&:after {
+			content:attr(title);
+		}
+	}
+	figcaption {
+		-moz-transition: all 0.6s ease;
+		-o-transition: all 0.6s ease;
+		-webkit-transition: all 0.6s ease;
+		background: rgba(0,0,0,0.75);
+		background: rgba(0,0,0,0.75);
+		bottom: 0;
+		color: white;
+		color: white;
+		left: -30%;
+		opacity: 0;
+		padding: 10px 20px;
+		padding: 10px 20px;
+		position: absolute;
+		position: absolute;
+	}
+	img {
+		display:block;
+		padding-bottom:20px;
+	}
+	li {
+		&:nth-child(1n) {
+			figure {
+				-moz-transform:rotate(30deg) scale(0.7,0.7);
+				-webkit-transform:rotate(30deg) scale(0.7,0.7);
+				left:60%;
+				top:0%;
+				transform:rotate(30deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(2n) {
+			figure {
+				-moz-transform:rotate(-30deg) scale(0.7,0.7);
+				-webkit-transform:rotate(-30deg) scale(0.7,0.7);
+				left:80%;
+				top:40%;
+				transform:rotate(-30deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(3n) {
+			figure {
+				-moz-transform:rotate(40deg) scale(0.7,0.7);
+				-webkit-transform:rotate(40deg) scale(0.7,0.7);
+				left:-10%;
+				top:50%;
+				transform:rotate(40deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(4n) {
+			figure {
+				-moz-transform:rotate(-30deg) scale(0.7,0.7);
+				-webkit-transform:rotate(-30deg) scale(0.7,0.7);
+				left:-10%;
+				top:0%;
+				transform:rotate(-30deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(5n) {
+			figure {
+				-moz-transform:rotate(-20deg) scale(0.8,0.8);
+				-webkit-transform:rotate(-20deg) scale(0.8,0.8);
+				left:20%;
+				top:50%;
+				transform:rotate(-20deg) scale(0.8,0.8);
+				z-index:3;
+			}
+		}
+		&:nth-child(6n) {
+			figure {
+				-moz-transform:rotate(30deg) scale(0.7,0.7);
+				-webkit-transform:rotate(30deg) scale(0.7,0.7);
+				left:55%;
+				top:60%;
+				transform:rotate(30deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(7n) {
+			figure {
+				-moz-transform:rotate(10deg) scale(0.7,0.7);
+				-webkit-transform:rotate(10deg) scale(0.7,0.7);
+				left:21%;
+				top:0%;
+				transform:rotate(10deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(8n) {
+			figure {
+				-moz-transform:rotate(28deg) scale(0.7,0.7);
+				-webkit-transform:rotate(28deg) scale(0.7,0.7);
+				left:35%;
+				top:0%;
+				transform:rotate(28deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(9n) {
+			figure {
+				-moz-transform:rotate(48deg) scale(0.7,0.7);
+				-webkit-transform:rotate(48deg) scale(0.7,0.7);
+				left:-30%;
+				top:50%;
+				transform:rotate(48deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(10n) {
+			figure {
+				-moz-transform:rotate(-38deg) scale(0.7,0.7);
+				-webkit-transform:rotate(-38deg) scale(0.7,0.7);
+				left:-90%;
+				top:0%;
+				transform:rotate(-38deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(11n) {
+			figure {
+				-moz-transform:rotate(18deg) scale(0.7,0.7);
+				-webkit-transform:rotate(18deg) scale(0.7,0.7);
+				left:80%;
+				top:0%;
+				transform:rotate(18deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(12n) {
+			figure {
+				-moz-transform:rotate(-38deg) scale(0.7,0.7);
+				-webkit-transform:rotate(-38deg) scale(0.7,0.7);
+				left:-32%;
+				top:0%;
+				transform:rotate(-38deg) scale(0.7,0.7);
+			}
+		}
+		&:nth-child(n) {
+			figure {
+				&:hover {
+					-moz-transform:rotate(0deg) scale(1,1);
+					-webkit-transform:rotate(0deg) scale(1,1);
+					transform:rotate(0deg) scale(1,1);
+				}
+			}
+		}
+	}
+}
+#app-page-heading {
+	font-size: 15px;
+	padding: 16px;
+	position: fixed;
+	right: 0;
+	z-index: 100000;
+}
