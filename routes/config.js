@@ -3,6 +3,7 @@ var config = {
   instagram_redirect_partial_uri: process.env.IG_REDIRECT_PARTIAL_URI,
   instagram_client_id: process.env.IG_CLIENT_ID,
   instagram_client_secret: process.env.IG_SECRET,
+  instagram_media_limit: process.env.IG_MEDIA_LIMIT,
 
   params: {
     title							: 'Instagram Photo Gallery',

@@ -29,14 +29,17 @@ var getCityGrams = function (req, res) {
 };
 
 var getGrams = function (medias) {
-  var results = [];
-  medias.forEach(function (m) {
+  var
+    results = [];
+  for (var i = 0; i < config.instagram_media_limit; i++) {
     results.push({
-      photoId: m.id,
-      imgSrc: m.images.thumbnail.url,
-      caption: m.caption && m.caption.text ? m.caption.text : ''
+      photoId: medias[i].id,
+      imgSrc: medias[i].images.thumbnail.url,
+      caption: medias[i].caption && medias[i].caption.text ? medias[i].caption.text : ''
     });
-  });
+
+    if (i < 0) { break; }
+  };
 
   return results;
 };
