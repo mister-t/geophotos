@@ -11,6 +11,7 @@ var getGrams = function (medias) {
   var results = [];
   medias.forEach(function (m) {
     results.push({
+      photoId: m.id,
       imgSrc: m.images.thumbnail.url,
       caption: m.caption && m.caption.text ? m.caption.text : ''
     });
@@ -70,6 +71,28 @@ router.get(config.instagram_redirect_partial_uri, handleAuth);
 
 /* Search around a specific city for new grams */
 router.get('/instasearch/:city', function (req, res) {
+  if (req.cookies.instaToken) {
+    console.log('instagram token cookie deteced');
+    instaApi.use({ access_token: req.cookies.instaToken });
+    return instaApi.media_searchAsync(config.cities.sf.lat, config.cities.sf.lng)
+    .spread(function (medias, pagination, remaining, limit) {
+      return medias;
+    })
+    .then(function (medias) {
+      var grams = getGrams(medias);
+      console.log(grams);
+      res.json(grams);
+    })
+    .catch(function (errors) {
+      console.log(errors);
+    });
+  } else {
+    console.log('instagram token cookie not deteced');
+    res.redirect('/authorize-user');
+  }
+});
+
+router.get('/photos/:city', function (req, res) {
   if (req.cookies.instaToken) {
     console.log('instagram token cookie deteced');
     instaApi.use({ access_token: req.cookies.instaToken });
