@@ -39,7 +39,7 @@ define([ 'App'], function (App) {
       },
 
       initialize: function (options) {
-        options || (options = {});
+        options ? options : (options = {});
         this.city = options.city;
       }
     });

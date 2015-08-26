@@ -14,8 +14,8 @@ define([
     var
       API = {
         showPhotos: function (city) {
-          console.log('showPhotos called; city = ' + city);
-          city || (city = 'sf');
+          //console.log('showPhotos called; city = ' + city);
+          city ? city : (city = 'sf');
           App.navigate('/city/' + city);
           ListController.showPhotos(city);
         }
