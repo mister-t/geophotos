@@ -17,9 +17,9 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
               App.trigger(Constants.photos.list.CITY_CHANGED, city);
             });
 
-            photoList.on(Constants.photos.list.ANIMATE, function (val) {
+            heading.on(Constants.photos.list.ANIMATION_CHANGED, function (effect) {
               photoList.children.each(function (view) {
-                view.animate(val);
+                view.animate(effect);
               });
             });
 

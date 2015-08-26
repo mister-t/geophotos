@@ -15,7 +15,8 @@ define([
       template: headingTpl,
 
       events: {
-        'change select': function (evt) { this.selectCity(evt); }
+        'change #select_city': function (evt) { this.selectCity(evt); },
+        'change #select_animation': function (evt) { this.selectAnimation(evt); }
       },
 
       initialize: function (options) {
@@ -26,6 +27,11 @@ define([
       selectCity: function (evt) {
         evt.preventDefault();
         this.trigger(Constants.photos.list.CITY_CHANGED, evt.target.value);
+      },
+
+      selectAnimation: function (evt) {
+        evt.preventDefault();
+        this.trigger(Constants.photos.list.ANIMATION_CHANGED, evt.target.value);
       },
 
       onRender: function () {
