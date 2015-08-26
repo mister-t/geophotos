@@ -101,4 +101,10 @@ router.get(config.instagram_redirect_partial_uri, handleAuth);
 router.get('/photos/:city', function (req, res) {
   getCityGrams(req, res);
 });
+
+router.get('/city/:city', function (req, res) {
+  res.render('index', config.params);
+});
+
+
 module.exports = router;

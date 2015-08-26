@@ -6,8 +6,8 @@ define([
   App.module('PhotosApp', function (PhotosApp, App, Backbone, Marionette, $, _) {
     PhotosApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
-        'photos'      : 'showPhotos',
-        'photos/:city': 'showPhotos'
+        'photos/:city': 'showPhotos',
+        'city/:city'  : 'showPhotos'
       }
     });
 
@@ -16,7 +16,7 @@ define([
         showPhotos: function (city) {
           console.log('showPhotos called; city = ' + city);
           city || (city = 'sf');
-          App.navigate('/photos/' + city);
+          App.navigate('/city/' + city);
           ListController.showPhotos(city);
         }
       };
