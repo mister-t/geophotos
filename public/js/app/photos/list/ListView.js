@@ -15,12 +15,21 @@ define([
       template: headingTpl,
 
       events: {
+        'change select': function (evt) { this.selectCity(evt); }
       },
 
       initialize: function (options) {
+        options || (options = {});
+        this.city = options.city;
+      },
+
+      selectCity: function (evt) {
+        evt.preventDefault();
+        this.trigger(Constants.photos.list.CITY_CHANGED, evt.target.value);
       },
 
       onRender: function () {
+        this.$("select option[value='" + this.city + "']").attr("selected", "selected");
       }
     });
 

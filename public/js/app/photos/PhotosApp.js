@@ -22,8 +22,11 @@ define([
       };
 
     App.on(Constants.photos.SHOW_LIST, function (query) {
-      console.log('photo sub app: city = ' + query);
       API.showPhotos(query);
+    });
+
+    App.on(Constants.photos.list.CITY_CHANGED, function (city) {
+      API.showPhotos(city);
     });
 
     App.addInitializer(function () {

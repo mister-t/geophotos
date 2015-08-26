@@ -4,13 +4,18 @@ define(['App', 'constants', 'photos/list/ListView'], function (App, Constants, L
     List.Controller = {
       showPhotos: function (city) {
         require(['entities/photos'], function (photosEntities) {
+          console.log('updating view to ' + city);
           var fetchingphotos = city ? App.request('photo:entities', {city: city}) : App.request('photo:entities');
 
           $.when(fetchingphotos).done(function (photos) {
             console.log('controller photos: ', photos);
             var
-              heading = new ListView.Heading();
+              heading = new ListView.Heading({city: city});
               photoList = new ListView.PhotoList({collection: photos});
+
+            heading.on(Constants.photos.list.CITY_CHANGED, function (city) {
+              App.trigger(Constants.photos.list.CITY_CHANGED, city);
+            });
 
             photoList.on(Constants.photos.list.ANIMATE, function (val) {
               photoList.children.each(function (view) {
