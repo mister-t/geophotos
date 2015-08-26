@@ -21,7 +21,7 @@ h1 {
     height:500px;
     width:800px;
 }
-.pics a {
+.pics figure {
     background:#fff;
     display:inline;
     float:left;
@@ -46,44 +46,44 @@ h1 {
     display:block;
     padding-bottom:20px;
 }
-.pics a:hover {
+.pics figure:hover {
     z-index:100;
 }
-.pics a:after {
+.pics figure:after {
     content:attr(title);
 }
 
 /* Pictures placement, scaling and rotation */
 
-.pics li:nth-child(1n) a {
+.pics li:nth-child(1n) figure {
     -webkit-transform:rotate(30deg) scale(0.7,0.7);
     -moz-transform:rotate(30deg) scale(0.7,0.7);
     transform:rotate(30deg) scale(0.7,0.7);
     top:0%;
     left:60%;
 }
-.pics li:nth-child(2n) a {
+.pics li:nth-child(2n) figure {
     -webkit-transform:rotate(-30deg) scale(0.7,0.7);
     -moz-transform:rotate(-30deg) scale(0.7,0.7);
     transform:rotate(-30deg) scale(0.7,0.7);
     top:40%;
     left:80%;
 }
-.pics li:nth-child(3n) a {
+.pics li:nth-child(3n) figure {
     -webkit-transform:rotate(40deg) scale(0.7,0.7);
     -moz-transform:rotate(40deg) scale(0.7,0.7);
     transform:rotate(40deg) scale(0.7,0.7);
     top:50%;
     left:-10%;
 }
-.pics li:nth-child(4n) a {
+.pics li:nth-child(4n) figure {
     -webkit-transform:rotate(-30deg) scale(0.7,0.7);
     -moz-transform:rotate(-30deg) scale(0.7,0.7);
     transform:rotate(-30deg) scale(0.7,0.7);
     top:0%;
     left:-10%;
 }
-.pics li:nth-child(5n) a {
+.pics li:nth-child(5n) figure {
     -webkit-transform:rotate(-20deg) scale(0.8,0.8);
     -moz-transform:rotate(-20deg) scale(0.8,0.8);
     transform:rotate(-20deg) scale(0.8,0.8);
@@ -91,14 +91,14 @@ h1 {
     left:20%;
     z-index:3;
 }
-.pics li:nth-child(6n) a {
+.pics li:nth-child(6n) figure {
     -webkit-transform:rotate(30deg) scale(0.7,0.7);
     -moz-transform:rotate(30deg) scale(0.7,0.7);
     transform:rotate(30deg) scale(0.7,0.7);
     top:60%;
     left:55%;
 }
-.pics li:nth-child(7n) a {
+.pics li:nth-child(7n) figure {
     -webkit-transform:rotate(10deg) scale(0.7,0.7);
     -moz-transform:rotate(10deg) scale(0.7,0.7);
     transform:rotate(10deg) scale(0.7,0.7);
@@ -108,7 +108,7 @@ h1 {
 
 /* Pictures rotation and scaling on hover */
 
-.pics li:nth-child(n) a:hover {
+.pics li:nth-child(n) figure:hover {
     -webkit-transform:rotate(0deg) scale(1,1);
     -moz-transform:rotate(0deg) scale(1,1);
     transform:rotate(0deg) scale(1,1);
