@@ -29,7 +29,7 @@ var getCityGrams = function (req, res) {
 };
 
 var getGrams = function (medias) {
-  console.log(medias);
+  //console.log(medias);
   var
     results = [];
   for (var i = 0; i < config.instagram_media_limit; i++) {
@@ -63,20 +63,9 @@ router.get('/', function (req, res) {
   if (req.cookies.instaToken) {
     console.log('instagram token cookie deteced');
     instaApi.use({ access_token: req.cookies.instaToken });
-    return instaApi.media_searchAsync(config.cities.sf.lat, config.cities.sf.lng)
-    .spread(function (medias, pagination, remaining, limit) {
-      return medias;
-    })
-    .then(function (medias) {
-      console.log(getGrams(medias));
-      res.render('index', config.params);
-    })
-    .catch(function (errors) {
-      console.log(errors);
-    });
+    res.render('index', config.params);
   } else {
     console.log('instagram token cookie not deteced');
-    //res.render('index', config.params);
     res.redirect('/authorize-user');
   }
 });
